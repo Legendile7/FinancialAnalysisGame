@@ -8,6 +8,12 @@ public class PinataUploader : MonoBehaviour
     private string pinataApiKey = "b2e47308eb8a70731ba1";
     private string pinataSecretApiKey = "d37f782a3c1bb727886c817012b985f9c6d72fbc19a3acde74d94dc4b47bbc43";
     private string pinataUploadUrl = "https://api.pinata.cloud/pinning/pinFileToIPFS";
+    private string pinListUrl = "https://api.pinata.cloud/data/pinList";
+
+    private void Start()
+    {
+        StartCoroutine(GetPinnedFiles());
+    }
 
     public void Upload()
     {
@@ -35,6 +41,24 @@ public class PinataUploader : MonoBehaviour
         else
         {
             Debug.LogError("Upload Failed: " + request.error);
+        }
+    }
+
+    IEnumerator GetPinnedFiles()
+    {
+        UnityWebRequest request = UnityWebRequest.Get(pinListUrl);
+        request.SetRequestHeader("pinata_api_key", pinataApiKey);
+        request.SetRequestHeader("pinata_secret_api_key", pinataSecretApiKey);
+
+        yield return request.SendWebRequest();
+
+        if (request.result == UnityWebRequest.Result.Success)
+        {
+            Debug.Log("Pinata Response: " + request.downloadHandler.text);
+        }
+        else
+        {
+            Debug.LogError("Failed to retrieve files: " + request.error);
         }
     }
 }
