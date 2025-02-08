@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 54f0921763a474464872caf0f46654a0
+guid: 67efa5b8816fc41ca8cf6230e3d58d74
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -63,7 +63,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
-  cookieLightType: 0
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -78,7 +78,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: WebGL
+    buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -90,7 +90,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: Standalone
+    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -138,5 +138,6 @@ AssetOrigin:
   productId: 203399
   packageName: GUI Pro - Simple Casual
   packageVersion: 1.0.7
-  assetPath: Assets/Layer Lab/Scripts/Icon_Arrow_Prev.png
+  assetPath: Assets/Layer Lab/GUI Pro-SimpleCasual/ResourcesData/Fonts/MuseoModerno-CriticalNum_Transpar_46
+    SDF Atlas.png
   uploadId: 714426

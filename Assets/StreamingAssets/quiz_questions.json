@@ -1,0 +1,112 @@
+{
+    "questions": [
+        {
+            "question": "What does EBITDA stand for?",
+            "choices": ["Earnings Before Income Tax Depreciation Amortization", "Earnings Before Interest Tax Depreciation Amortization"],
+            "correctIndex": 0,
+            "difficulty": "Easy"
+        },
+        {
+            "question": "How do you calculate the current ratio?",
+            "choices": ["Current Assets / Current Liabilities", "Total Assets / Total Liabilities", "Net Income / Total Assets", "Revenue / Cost"],
+            "correctIndex": 0,
+            "difficulty": "Easy"
+        },
+        {
+            "question": "Is it always necessary to have a current ratio higher than 1?",
+            "choices": ["Yes", "No"],
+            "correctIndex": 1,
+            "difficulty": "Easy"
+        },
+        {
+            "question": "Is there any ONE perfect method or formula to calculate how successful a company is?",
+            "choices": ["Yes", "No"],
+            "correctIndex": 1,
+            "difficulty": "Easy"
+        },
+        {
+            "question": "What measures short-term financial wealth?",
+            "choices": ["Liquidity Ratio", "Current Ratio", "Net Profit Margin", "Return on Assets"],
+            "correctIndex": 1,
+            "difficulty": "Easy"
+        },
+        {
+            "question": "What term is used to tell how well a company generates cash to meet their obligations?",
+            "choices": ["Liquidity Ratio", "Profitability Ratio", "Efficiency Ratio", "Debt Ratio"],
+            "correctIndex": 0,
+            "difficulty": "Easy"
+        },
+        {
+            "question": "What is another name for cash, account receivables, inventory, prepaid expenses?",
+            "choices": ["Current Assets", "Non-current Assets", "Fixed Assets", "Operating Assets"],
+            "correctIndex": 0,
+            "difficulty": "Medium"
+        },
+        {
+            "question": "What is another name for long-term investments, property, plant, equipment, intangible assets like patents?",
+            "choices": ["Non-current Assets", "Current Assets", "Fixed Liabilities", "Operational Assets"],
+            "correctIndex": 0,
+            "difficulty": "Medium"
+        },
+        {
+            "question": "In general, is it better to have a current ratio higher or lower than 1?",
+            "choices": ["Higher", "Lower"],
+            "correctIndex": 0,
+            "difficulty": "Medium"
+        },
+        {
+            "question": "What does ROA stand for in a financial setting?",
+            "choices": ["Return on Assets", "Revenue on Assets", "Rate of Assets", "Return on Appreciation"],
+            "correctIndex": 0,
+            "difficulty": "Medium"
+        },
+        {
+            "question": "How do you calculate Net Profit Margin?",
+            "choices": ["(Revenue - Cost) / Revenue", "Net Income / Total Assets", "Current Assets / Current Liabilities", "Revenue / Cost"],
+            "correctIndex": 0,
+            "difficulty": "Medium"
+        },
+        {
+            "question": "How do you calculate Return on Assets?",
+            "choices": ["Net Income / Total Assets", "Revenue / Cost", "Current Assets / Current Liabilities", "(Revenue - Cost) / Revenue"],
+            "correctIndex": 0,
+            "difficulty": "Medium"
+        },
+        {
+            "question": "If a company has a revenue of $500,000 and a cost of $470,000, what is their net profit margin?",
+            "choices": [".06 (6%)", ".10 (10%)", ".08 (8%)", ".12 (12%)"],
+            "correctIndex": 0,
+            "difficulty": "Hard"
+        },
+        {
+            "question": "What is the current ratio if the current assets are $45.2 billion and the current liabilities are $48.8 billion?",
+            "choices": ["0.93", "1.02", "0.89", "1.10"],
+            "correctIndex": 0,
+            "difficulty": "Hard"
+        },
+        {
+            "question": "If a company has a net income of $184,000 and total assets of $177,000, what is the ROA?",
+            "choices": ["1.04", "1.10", "0.95", "1.02"],
+            "correctIndex": 0,
+            "difficulty": "Hard"
+        },
+        {
+            "question": "If a company has current assets of $307,000 and current liabilities of $298,000, what is the current ratio?",
+            "choices": ["1.03", "1.10", "0.98", "1.05"],
+            "correctIndex": 0,
+            "difficulty": "Hard"
+        },
+        {
+            "question": "What is the ROA if the net income is $482 million and the total assets are $434 million?",
+            "choices": ["1.11 (11%)", "1.05 (10.5%)", "1.09 (10.9%)", "1.07 (10.7%)"],
+            "correctIndex": 0,
+            "difficulty": "Hard"
+        },
+        {
+            "question": "What is the net profit margin if the revenue is $313 billion and the cost is $273 billion?",
+            "choices": [".1277 (12.8%)", ".10 (10%)", ".15 (15%)", ".12 (12%)"],
+            "correctIndex": 0,
+            "difficulty": "Hard"
+        }
+    ]
+}
