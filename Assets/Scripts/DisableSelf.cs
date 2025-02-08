@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class DisableSelf : MonoBehaviour
 {
-    public void DisableMe()
+    public void DisableMyself()
     {
         gameObject.SetActive(false);
     }
