@@ -5,7 +5,7 @@ using LootLocker.Requests;
 
 public class GameManager : MonoBehaviour
 {
-    void Start()
+    public void StartGuestSession()
     {
         LootLockerSDKManager.StartGuestSession((response) =>
         {
@@ -17,6 +17,19 @@ public class GameManager : MonoBehaviour
             }
 
             Debug.Log("successfully started LootLocker session");
+        });
+    }
+
+    public void ConvertGuestToGoogle(string googleIdToken)
+    {
+        LootLockerSDKManager.ConnectGoogleAccount(googleIdToken, (response) =>
+        {
+            if (!response.success)
+            {
+                Debug.Log("error connecting Google account");
+                return;
+            }
+            Debug.Log("successfully connected Google account");
         });
     }
 }
