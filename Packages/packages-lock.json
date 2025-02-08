@@ -14,7 +14,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.2d.aseprite": {
-      "version": "1.1.7",
+      "version": "1.1.8",
       "depth": 1,
       "source": "registry",
       "dependencies": {
@@ -92,17 +92,8 @@
       },
       "url": "https://packages.unity.com"
     },
-    "com.unity.ai.navigation": {
-      "version": "2.0.5",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {
-        "com.unity.modules.ai": "1.0.0"
-      },
-      "url": "https://packages.unity.com"
-    },
     "com.unity.burst": {
-      "version": "1.8.18",
+      "version": "1.8.19",
       "depth": 2,
       "source": "registry",
       "dependencies": {
@@ -149,7 +140,7 @@
         "com.unity.2d.spriteshape": "10.0.7",
         "com.unity.2d.tilemap": "1.0.0",
         "com.unity.2d.tilemap.extras": "4.1.0",
-        "com.unity.2d.aseprite": "1.1.7"
+        "com.unity.2d.aseprite": "1.1.8"
       }
     },
     "com.unity.ide.rider": {
@@ -171,7 +162,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.inputsystem": {
-      "version": "1.11.2",
+      "version": "1.12.0",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -258,23 +249,6 @@
       "dependencies": {
         "com.unity.render-pipelines.core": "17.0.3",
         "com.unity.searcher": "4.9.2"
-      }
-    },
-    "com.unity.template.universal-2d": {
-      "version": "file:com.unity.template.universal-2d",
-      "depth": 0,
-      "source": "embedded",
-      "dependencies": {
-        "com.unity.collab-proxy": "2.6.0",
-        "com.unity.feature.2d": "2.0.1",
-        "com.unity.ide.rider": "3.0.31",
-        "com.unity.ide.visualstudio": "2.0.22",
-        "com.unity.inputsystem": "1.11.2",
-        "com.unity.render-pipelines.universal": "17.0.3",
-        "com.unity.test-framework": "1.4.5",
-        "com.unity.timeline": "1.8.7",
-        "com.unity.ugui": "2.0.0",
-        "com.unity.visualscripting": "1.9.5"
       }
     },
     "com.unity.test-framework": {
