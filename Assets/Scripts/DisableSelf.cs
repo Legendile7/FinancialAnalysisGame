@@ -6,4 +6,6 @@ public class DisableSelf : MonoBehaviour
     {
         gameObject.SetActive(false);
     }
+
+   
 }

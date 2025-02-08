@@ -8,6 +8,7 @@ using System.Text.RegularExpressions;
 
 public class GameManager : MonoBehaviour
 {
+    
     public GameObject LoginPanel;
     public GameObject SignUpWindow;
     public GameObject LoginWindow;
@@ -208,4 +209,6 @@ public class GameManager : MonoBehaviour
     }
 
     
+
+
 }
