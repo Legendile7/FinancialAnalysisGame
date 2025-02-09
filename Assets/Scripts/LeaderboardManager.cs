@@ -33,7 +33,7 @@ public class LeaderboardManager : MonoBehaviour
                 leaderboardText += currentEntry.rank + ".";
                 leaderboardText += currentEntry.player.name;
                 leaderboardText += " - ";
-                leaderboardText += currentEntry.score;
+                leaderboardText += currentEntry.score + " XP";
                 leaderboardText += "\n";
             }
             LeaderboardText.text = leaderboardText;
