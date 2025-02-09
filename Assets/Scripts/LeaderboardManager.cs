@@ -12,7 +12,7 @@ public class LeaderboardManager : MonoBehaviour
     public TMP_Text LeaderboardText;
     private string leaderboardKey = "lb";
 
-    void Start()
+    void OnEnable()
     {
         FetchLeaderboard();
     }
