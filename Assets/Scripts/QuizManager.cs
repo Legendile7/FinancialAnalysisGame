@@ -52,6 +52,10 @@ public class QuizManager : MonoBehaviour
     public TMP_Text XPGain;
     public TMP_Text gemsGain;
 
+    public TMP_Text XPText;
+    public TMP_Text gemsText;
+    public Slider XPSlider;
+
     int xpGain = 0;
     int gemsGainAmount = 0;
 
@@ -91,8 +95,51 @@ public class QuizManager : MonoBehaviour
         scoreText.text = $"Score: {totalCorrect}/5 ({totalCorrect * 20}%)";
         xpGain = totalCorrect * 10;
         gemsGainAmount = totalCorrect * 2;
-        XPGain.text = "+" + xpGain;
+        XPGain.text = "XP  +" + xpGain;
         gemsGain.text = "+" + gemsGainAmount;
+
+        string currencyID = "01JKME7CJHN0DJCG9QSRTZR599";
+        LootLockerSDKManager.CreditBalanceToWallet(PlayerPrefs.GetString("PlayerWalletID"), currencyID, gemsGainAmount.ToString(), response =>
+        {
+            if (!response.success)
+            {
+                Debug.Log("Failed: " + response.errorData);
+                return;
+            }
+            Debug.Log(response.success);
+            Debug.Log("Added " + gemsGainAmount + " gems to account successfully!");
+        });
+
+        LootLockerSDKManager.ListBalancesInWallet(PlayerPrefs.GetString("PlayerWalletID"), response =>
+        {
+            if (!response.success)
+            {
+                Debug.Log("Failed: " + response.errorData);
+                return;
+            }
+            Debug.Log(response.success);
+            foreach (var balance in response.balances)
+            {
+                if (balance.currency.id == currencyID)
+                {
+                    gemsText.text = balance.amount;
+                }
+            }
+        });
+
+        LootLockerSDKManager.AddPointsToPlayerProgression("xp", (ulong)xpGain, response =>
+        {
+            if (!response.success)
+            {
+                Debug.Log("Failed: " + response.errorData);
+                return;
+            }
+            Debug.Log(response.success);
+            Debug.Log("Added " + xpGain + " XP to account successfully!");
+
+            XPText.text = response.step.ToString();
+            XPSlider.value = response.points / (float)response.next_threshold;
+        });
 
         ResetQuiz();
     }
