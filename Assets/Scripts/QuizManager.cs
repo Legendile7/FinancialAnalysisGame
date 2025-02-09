@@ -94,6 +94,11 @@ public class QuizManager : MonoBehaviour
         XPGain.text = "+" + xpGain;
         gemsGain.text = "+" + gemsGainAmount;
 
+        ResetQuiz();
+    }
+
+    public void ResetQuiz()
+    {
         questionCount = 0;
         totalCorrect = 0;
         askedQuestions.Clear();
@@ -108,17 +113,7 @@ public class QuizManager : MonoBehaviour
 
     public void RestartQuiz()
     {
-
-        questionCount = 0;
-        totalCorrect = 0;
-        askedQuestions.Clear();
-
-        // Reset answer counts
-        for (int i = 0; i < 3; i++)
-        {
-            correctAnswers[i] = 0;
-            incorrectAnswers[i] = 0;
-        }
+        ResetQuiz();
         quizEndPanel.SetActive(false);
         quizPanel.SetActive(true);
         LoadNextQuestion();
