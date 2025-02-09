@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour
     public GameObject errorNotification;
     public TMP_Text errorNotificationText;
 
+    public TMP_Text usernameText;
+
     public void NewUser()
     {
         string email = this.signupEmail.text;
@@ -81,6 +83,7 @@ public class GameManager : MonoBehaviour
                                 successNotification.SetActive(true);
                                 successNotificationText.text = "Welcome back " + response.name + "!";
                                 PlayerPrefs.SetString("playerName", response.name);
+                                usernameText.text = response.name;
                             }
                             else
                             {
@@ -135,6 +138,7 @@ public class GameManager : MonoBehaviour
                     successNotification.SetActive(true);
                     successNotificationText.text = "Welcome back " + response.name + "!";
                     PlayerPrefs.SetString("playerName", response.name);
+                    usernameText.text = response.name;
                 }
                 else
                 {

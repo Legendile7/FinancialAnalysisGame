@@ -3124,6 +3124,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1081266022}
     - target: {fileID: 2235126353724372424, guid: 3c321aed9e818014ebc549ee54f0a98b, type: 3}
+      propertyPath: usernameText
+      value: 
+      objectReference: {fileID: 1936633867}
+    - target: {fileID: 2235126353724372424, guid: 3c321aed9e818014ebc549ee54f0a98b, type: 3}
       propertyPath: loginPassword
       value: 
       objectReference: {fileID: 1888942455}
@@ -21479,7 +21483,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: legendile7
+  m_text: username
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dc2cc93475f76427c86a8262bee36b88, type: 2}
   m_sharedMaterial: {fileID: 2269793554123077917, guid: dc2cc93475f76427c86a8262bee36b88, type: 2}

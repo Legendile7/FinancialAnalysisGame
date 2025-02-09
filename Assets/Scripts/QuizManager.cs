@@ -108,6 +108,17 @@ public class QuizManager : MonoBehaviour
 
     public void RestartQuiz()
     {
+
+        questionCount = 0;
+        totalCorrect = 0;
+        askedQuestions.Clear();
+
+        // Reset answer counts
+        for (int i = 0; i < 3; i++)
+        {
+            correctAnswers[i] = 0;
+            incorrectAnswers[i] = 0;
+        }
         quizEndPanel.SetActive(false);
         quizPanel.SetActive(true);
         LoadNextQuestion();
