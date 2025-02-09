@@ -59,6 +59,8 @@ public class QuizManager : MonoBehaviour
     int xpGain = 0;
     int gemsGainAmount = 0;
 
+    public LeaderboardManager leaderboardManager;
+
     void OnEnable()
     {
         LoadQuizData();
@@ -139,6 +141,7 @@ public class QuizManager : MonoBehaviour
 
             XPText.text = response.step.ToString();
             XPSlider.value = response.points / (float)response.next_threshold;
+            leaderboardManager.SubmitScore((int)response.points);
         });
 
         ResetQuiz();

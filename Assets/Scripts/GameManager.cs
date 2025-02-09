@@ -28,11 +28,6 @@ public class GameManager : MonoBehaviour
 
     public QuizManager quizManager;
 
-    private string pinataApiKey = "b2e47308eb8a70731ba1";
-    private string pinataSecretApiKey = "d37f782a3c1bb727886c817012b985f9c6d72fbc19a3acde74d94dc4b47bbc43";
-    private string pinataUploadUrl = "https://api.pinata.cloud/pinning/pinFileToIPFS";
-    private string pinListUrl = "https://api.pinata.cloud/data/pinList";
-
     public void NewUser()
     {
         string email = this.signupEmail.text;
@@ -61,7 +56,7 @@ public class GameManager : MonoBehaviour
             }
             else
             {
-                Debug.Log("Sign up Successful");
+                Debug.Log("Sign up Successful: " + response.success);
                 successNotification.SetActive(true);
                 successNotificationText.text = "Verification email sent to " + email;
             }
@@ -103,7 +98,7 @@ public class GameManager : MonoBehaviour
                                 }
                             }
                         });
-                        LootLockerSDKManager.AddPointsToPlayerProgression("xp", (ulong)0, response =>
+                        LootLockerSDKManager.GetPlayerProgression("xp", response =>
                         {
                             if (!response.success)
                             {
@@ -180,15 +175,17 @@ public class GameManager : MonoBehaviour
                 if (!response.success)
                 {
                     Debug.Log("Failed: " + response.errorData);
-                    return;
                 }
-                Debug.Log(response.success);
-                string currencyID = "01JKME7CJHN0DJCG9QSRTZR599";
-                foreach (var balance in response.balances)
+                else
                 {
-                    if (balance.currency.id == currencyID)
+                    Debug.Log(response.success);
+                    string currencyID = "01JKME7CJHN0DJCG9QSRTZR599";
+                    foreach (var balance in response.balances)
                     {
-                        quizManager.gemsText.text = balance.amount;
+                        if (balance.currency.id == currencyID)
+                        {
+                            quizManager.gemsText.text = balance.amount;
+                        }
                     }
                 }
             });
@@ -197,12 +194,14 @@ public class GameManager : MonoBehaviour
                 if (!response.success)
                 {
                     Debug.Log("Failed: " + response.errorData);
-                    return;
                 }
-                Debug.Log(response.success);
+                else
+                {
+                    Debug.Log(response.success);
 
-                quizManager.XPText.text = response.step.ToString();
-                quizManager.XPSlider.value = response.points / (float)response.next_threshold;
+                    quizManager.XPText.text = response.step.ToString();
+                    quizManager.XPSlider.value = response.points / (float)response.next_threshold;
+                }
             });
             // Handle Returning Player
             LootLockerSDKManager.GetPlayerName((response) =>
