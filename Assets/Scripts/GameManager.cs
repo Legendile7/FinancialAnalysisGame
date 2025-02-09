@@ -5,6 +5,9 @@ using LootLocker.Requests;
 using TMPro;
 using UnityEngine.UI;
 using System.Text.RegularExpressions;
+using LootLocker.LootLockerEnums;
+using static LootLocker.Requests.LootLockerListCatalogPricesResponse;
+using static UnityEditor.Progress;
 
 public class GameManager : MonoBehaviour
 {
@@ -27,6 +30,21 @@ public class GameManager : MonoBehaviour
     public TMP_Text usernameText;
 
     public QuizManager quizManager;
+
+    public AudioClip[] Music;
+    public AudioSource audioSource;
+
+    public GameObject[] buyButtons;
+    public GameObject[] equipButtons;
+
+    public TMP_Text gemsText;
+
+    public void PlayMusic(int musicIndex)
+    {
+        audioSource.Stop();
+        audioSource.clip = Music[musicIndex];
+        audioSource.Play();
+    }
 
     public void NewUser()
     {
@@ -285,8 +303,5 @@ public class GameManager : MonoBehaviour
         LoginWindow.SetActive(false);
         ResetWindow.SetActive(true);
     }
-
-    
-
 
 }

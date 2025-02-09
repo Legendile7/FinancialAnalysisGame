@@ -60,6 +60,7 @@ public class QuizManager : MonoBehaviour
     int gemsGainAmount = 0;
 
     public LeaderboardManager leaderboardManager;
+    public GameManager gameManager;
 
     void OnEnable()
     {
