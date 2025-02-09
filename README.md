@@ -7,18 +7,14 @@
 </p>
 
 <p align="center">
-  <b>[Project Description Big Idea (Should be same as Devpost for consistency)</b></br>
-  <sub>Use this platform to strengthen your financial analysis... and learn about your companies financials... by uploading documents... uses generative AI to create new questions...etc.<sub>
+  <b>Project Description</b></br>
+  <sub>Star Tank is a Financial Game Analysis tool to unify knowledge of companies’ financials to their employers. This tool interprets the balance sheet uploaded to the user by employers, curating a personalized list of questions based on the company financials the user uploaded. Additionally, there are questions that help the user understand the terms that he is reading.
+<sub>
 </p>
 
 <br />
-<b>Create a gif based off a small demo and place it below</b></br>
-<p align="center">
-  <img src="https://github.com/thespcrewroy/uga-scs-competitive-hacking.github.io/blob/development/static/img/thehackpackwebsite.gif" alt="Demo" width="800" />
-</p>
-
 - **Simple**: Extremely simple to use - so simple that it almost feels like magic!
-- **[Adjective]**: [Description]
+- **Exciting**: Explore a curated list of questions based off your uploads
 - **Awesome**: The educational resource you didn't know you needed before. Maintained by a group of passionate game developers.
 
 <details>
@@ -37,7 +33,10 @@
 
 | Day                 | Task           | Description                                                          |
 | ------------------- | -------------- | -------------------------------------------------------------------- |
-| `Friday` | `Brainstorming` | brainstormed ideas for... |
+| `Friday` | `Brainstorming` | brainstormed ideas for the game such as leaderboards, currency, and cosmeetics |
+| `Friday` | `Project Repo` | created a project repo based to push changes to the game |
+| `Saturday` | `Pinata` | incorporated Pinata for file uploads |
+| `Sunday` | `Pinata` | added dinal touches to project and uploaded work to the Devpost |
 
 [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/fire.png)](#license)
 
