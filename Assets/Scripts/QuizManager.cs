@@ -110,23 +110,7 @@ public class QuizManager : MonoBehaviour
             }
             Debug.Log(response.success);
             Debug.Log("Added " + gemsGainAmount + " gems to account successfully!");
-        });
-
-        LootLockerSDKManager.ListBalancesInWallet(PlayerPrefs.GetString("PlayerWalletID"), response =>
-        {
-            if (!response.success)
-            {
-                Debug.Log("Failed: " + response.errorData);
-                return;
-            }
-            Debug.Log(response.success);
-            foreach (var balance in response.balances)
-            {
-                if (balance.currency.id == currencyID)
-                {
-                    gemsText.text = balance.amount;
-                }
-            }
+            gemsText.text = response.amount;
         });
 
         LootLockerSDKManager.AddPointsToPlayerProgression("xp", (ulong)xpGain, response =>
@@ -143,6 +127,27 @@ public class QuizManager : MonoBehaviour
             XPSlider.value = response.points / (float)response.next_threshold;
             leaderboardManager.SubmitScore((int)response.points);
         });
+
+        /*
+        LootLockerSDKManager.ListBalancesInWallet(PlayerPrefs.GetString("PlayerWalletID"), response =>
+        {
+            if (!response.success)
+            {
+                Debug.Log("Failed: " + response.errorData);
+                return;
+            }
+            Debug.Log(response.success);
+            for (int i = 0; i < response.balances.Length; i++)
+            {
+                if (response.balances[i].currency.id == currencyID)
+                {
+                    gemsText.text = response.balances[i].amount;
+                }
+                continue;
+            }
+        });
+        */
+
 
         ResetQuiz();
     }
