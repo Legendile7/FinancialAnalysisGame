@@ -12,7 +12,6 @@
 <sub>
 </p>
 
-<br />
 - **Simple**: Extremely simple to use - so simple that it almost feels like magic!
 - **Exciting**: Explore a curated list of questions based off your uploads
 - **Awesome**: The educational resource you didn't know you needed before. Maintained by a group of passionate game developers.
