@@ -28,6 +28,11 @@ public class GameManager : MonoBehaviour
 
     public QuizManager quizManager;
 
+    private string pinataApiKey = "b2e47308eb8a70731ba1";
+    private string pinataSecretApiKey = "d37f782a3c1bb727886c817012b985f9c6d72fbc19a3acde74d94dc4b47bbc43";
+    private string pinataUploadUrl = "https://api.pinata.cloud/pinning/pinFileToIPFS";
+    private string pinListUrl = "https://api.pinata.cloud/data/pinList";
+
     public void NewUser()
     {
         string email = this.signupEmail.text;
