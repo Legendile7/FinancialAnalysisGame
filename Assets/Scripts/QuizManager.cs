@@ -38,6 +38,7 @@ public class QuizManager : MonoBehaviour
 
     public int questionCount = 0;
     public TMP_Text questionCounter;
+    public TMP_Text difficultyText;
 
     public int totalCorrect = 0;
 
@@ -50,6 +51,9 @@ public class QuizManager : MonoBehaviour
     public TMP_Text scoreText;
     public TMP_Text XPGain;
     public TMP_Text gemsGain;
+
+    int xpGain = 0;
+    int gemsGainAmount = 0;
 
     void Start()
     {
@@ -81,7 +85,14 @@ public class QuizManager : MonoBehaviour
 
     public void EndQuiz()
     {
+        quizPanel.SetActive(false);
+        quizEndPanel.SetActive(true);
 
+        scoreText.text = $"Score: {totalCorrect}/5 ({totalCorrect * 20}%)";
+        xpGain = totalCorrect * 10;
+        gemsGainAmount = totalCorrect * 2;
+        XPGain.text = "+" + xpGain;
+        gemsGain.text = "+" + gemsGainAmount;
 
         questionCount = 0;
         totalCorrect = 0;
@@ -93,6 +104,13 @@ public class QuizManager : MonoBehaviour
             correctAnswers[i] = 0;
             incorrectAnswers[i] = 0;
         }
+    }
+
+    public void RestartQuiz()
+    {
+        quizEndPanel.SetActive(false);
+        quizPanel.SetActive(true);
+        LoadNextQuestion();
     }
 
     void LoadQuizData()
@@ -116,23 +134,45 @@ public class QuizManager : MonoBehaviour
                           correctAnswers[2] * 3 - incorrectAnswers[2] * 3;
         Debug.Log($"Adding {pointsToAdd} points to player's skill");
         string progressionKey = "skill";
-        ulong amountOfPoints = (ulong) pointsToAdd;
-
-        Debug.Log($"Adding {amountOfPoints} points to player's skill");
-
-        LootLockerSDKManager.AddPointsToPlayerProgression(progressionKey, amountOfPoints, response =>
+        ulong amountOfPoints = 0;
+        if (pointsToAdd >= 0)
         {
-            if (!response.success)
+            amountOfPoints = (ulong)pointsToAdd;
+            Debug.Log($"Adding {amountOfPoints} points to player's skill");
+            LootLockerSDKManager.AddPointsToPlayerProgression(progressionKey, amountOfPoints, response =>
             {
-                Debug.Log("Failed: " + response.errorData);
-                return;
-            }
+                if (!response.success)
+                {
+                    Debug.Log("Failed: " + response.errorData);
+                    return;
+                }
 
-            Debug.Log(response.success);
+                Debug.Log(response.success);
 
-            currentSkillScore = Mathf.Min((int)response.points, maxSkillScore);
-            Debug.Log($"The player's skill is now {currentSkillScore} points");
-        });
+                currentSkillScore = Mathf.Min((int)response.points, maxSkillScore);
+                Debug.Log($"The player's skill is now {currentSkillScore} points");
+            });
+        }
+        else
+        {
+            amountOfPoints = (ulong)Mathf.Abs(pointsToAdd);
+            Debug.Log($"Subtracting {amountOfPoints} points to player's skill");
+            LootLockerSDKManager.SubtractPointsFromPlayerProgression(progressionKey, amountOfPoints, response =>
+            {
+                if (!response.success)
+                {
+                    Debug.Log("Failed: " + response.errorData);
+                    return;
+                }
+
+                Debug.Log(response.success);
+
+                currentSkillScore = Mathf.Min((int)response.points, maxSkillScore);
+                Debug.Log($"The player's skill is now {currentSkillScore} points");
+            });
+        }
+
+        EndQuiz();
     }
 
     public string GetNextQuestionDifficulty()
@@ -140,9 +180,9 @@ public class QuizManager : MonoBehaviour
         float normalizedSS = Mathf.Clamp(currentSkillScore, 0, maxSkillScore) / (float)maxSkillScore;
 
         // Probability for each difficulty based on the skill score
-        float P_easy = Mathf.Max(0, 1 - normalizedSS);    // Easy decreases as skill increases
-        float P_medium = Mathf.Min(1, normalizedSS * 0.7f); // Medium increases as skill increases
-        float P_hard = Mathf.Min(1, normalizedSS * 0.3f);   // Hard increases, but is capped at a lower rate than medium
+        float P_easy = Mathf.Max(0, 1 - normalizedSS*1.5f);    // Easy decreases as skill increases
+        float P_medium = Mathf.Min(1, normalizedSS); // Medium increases as skill increases
+        float P_hard = Mathf.Min(1, normalizedSS * 0.5f);   // Hard increases, but is capped at a lower rate than medium
 
         // Normalize the probabilities to sum to 1
         float total = P_easy + P_medium + P_hard;
@@ -172,6 +212,7 @@ public class QuizManager : MonoBehaviour
 
         // Find a new question that hasn't been asked yet
         string difficulty = GetNextQuestionDifficulty();
+        difficultyText.text = difficulty;
         List<QuizQuestion> filteredQuestions = quizData.questions.FindAll(q => q.difficulty == difficulty);
         filteredQuestions = filteredQuestions.Where(q => !askedQuestions.Contains(q)).ToList();
 
