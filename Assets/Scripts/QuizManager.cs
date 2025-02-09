@@ -55,7 +55,7 @@ public class QuizManager : MonoBehaviour
     int xpGain = 0;
     int gemsGainAmount = 0;
 
-    void Start()
+    void OnEnable()
     {
         LoadQuizData();
         string progressionKey = "skill";
