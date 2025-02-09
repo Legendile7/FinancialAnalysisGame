@@ -1,13 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using LootLocker.Requests;
 using TMPro;
 using UnityEngine.UI;
 using System.Text.RegularExpressions;
-using LootLocker.LootLockerEnums;
-using static LootLocker.Requests.LootLockerListCatalogPricesResponse;
-using static UnityEditor.Progress;
 
 public class GameManager : MonoBehaviour
 {

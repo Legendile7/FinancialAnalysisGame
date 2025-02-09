@@ -1,10 +1,12 @@
 using LootLocker.Requests;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Networking;
 using UnityEngine.UI;
 
 [Serializable]
@@ -177,15 +179,28 @@ public class QuizManager : MonoBehaviour
 
     void LoadQuizData()
     {
+        StartCoroutine(LoadQuizDataCoroutine());
+    }
+    IEnumerator LoadQuizDataCoroutine()
+    {
         string filePath = Path.Combine(Application.streamingAssetsPath, "quiz_questions.json");
-        if (File.Exists(filePath))
+
+        // WebGL requires using UnityWebRequest
+        UnityWebRequest request = UnityWebRequest.Get(filePath);
+        yield return request.SendWebRequest();
+
+        if (request.result != UnityWebRequest.Result.Success)
         {
-            string json = File.ReadAllText(filePath);
-            quizData = JsonUtility.FromJson<QuizData>(json);
+            Debug.LogError("Failed to load quiz data: " + request.error);
+            yield break;
         }
-        else
+
+        string json = request.downloadHandler.text;
+
+        quizData = JsonUtility.FromJson<QuizData>(json);
+        if (quizData == null || quizData.questions == null || quizData.questions.Count == 0)
         {
-            Debug.LogError("Quiz data file not found!");
+            Debug.LogError("Quiz data is empty or could not be parsed!");
         }
     }
 
