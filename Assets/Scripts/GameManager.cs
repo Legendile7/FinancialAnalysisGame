@@ -5,9 +5,11 @@ using LootLocker.Requests;
 using TMPro;
 using UnityEngine.UI;
 using System.Text.RegularExpressions;
+using TransitionsPlus;
 
 public class GameManager : MonoBehaviour
 {
+    
     public GameObject LoginPanel;
     public GameObject SignUpWindow;
     public GameObject LoginWindow;
@@ -25,8 +27,6 @@ public class GameManager : MonoBehaviour
     public TMP_Text errorNotificationText;
 
     public TMP_Text usernameText;
-
-    public QuizManager quizManager;
 
     public void NewUser()
     {
@@ -76,41 +76,6 @@ public class GameManager : MonoBehaviour
                     if (response.success)
                     {
                         Debug.Log("Session started successfully");
-                        PlayerPrefs.SetString("PlayerULID", response.player_ulid);
-                        LootLockerSDKManager.GetWalletByHolderId(PlayerPrefs.GetString("PlayerULID"), LootLocker.LootLockerEnums.LootLockerWalletHolderTypes.player, (response) =>
-                        {
-                            PlayerPrefs.SetString("PlayerWalletID", response.id);
-                        });
-                        LootLockerSDKManager.ListBalancesInWallet(PlayerPrefs.GetString("PlayerWalletID"), response =>
-                        {
-                            if (!response.success)
-                            {
-                                Debug.Log("Failed: " + response.errorData);
-                                return;
-                            }
-                            Debug.Log(response.success);
-                            string currencyID = "01JKME7CJHN0DJCG9QSRTZR599";
-                            foreach (var balance in response.balances)
-                            {
-                                if (balance.currency.id == currencyID)
-                                {
-                                    quizManager.gemsText.text = balance.amount;
-                                }
-                            }
-                        });
-                        LootLockerSDKManager.AddPointsToPlayerProgression("xp", (ulong)0, response =>
-                        {
-                            if (!response.success)
-                            {
-                                Debug.Log("Failed: " + response.errorData);
-                                return;
-                            }
-                            Debug.Log(response.success);
-
-                            quizManager.XPText.text = response.step.ToString();
-                            quizManager.XPSlider.value = response.points / (float)response.next_threshold;
-                        });
-
                         LootLockerSDKManager.GetPlayerName((response) =>
                         {
                             if (response.success)
@@ -165,40 +130,6 @@ public class GameManager : MonoBehaviour
                 return;
             }
 
-            PlayerPrefs.SetString("PlayerULID", response.SessionResponse.player_ulid);
-            LootLockerSDKManager.GetWalletByHolderId(PlayerPrefs.GetString("PlayerULID"), LootLocker.LootLockerEnums.LootLockerWalletHolderTypes.player, (response) =>
-            {
-                PlayerPrefs.SetString("PlayerWalletID", response.id);
-            });
-            LootLockerSDKManager.ListBalancesInWallet(PlayerPrefs.GetString("PlayerWalletID"), response =>
-            {
-                if (!response.success)
-                {
-                    Debug.Log("Failed: " + response.errorData);
-                    return;
-                }
-                Debug.Log(response.success);
-                string currencyID = "01JKME7CJHN0DJCG9QSRTZR599";
-                foreach (var balance in response.balances)
-                {
-                    if (balance.currency.id == currencyID)
-                    {
-                        quizManager.gemsText.text = balance.amount;
-                    }
-                }
-            });
-            LootLockerSDKManager.AddPointsToPlayerProgression("xp", (ulong)0, response =>
-            {
-                if (!response.success)
-                {
-                    Debug.Log("Failed: " + response.errorData);
-                    return;
-                }
-                Debug.Log(response.success);
-
-                quizManager.XPText.text = response.step.ToString();
-                quizManager.XPSlider.value = response.points / (float)response.next_threshold;
-            });
             // Handle Returning Player
             LootLockerSDKManager.GetPlayerName((response) =>
             {
